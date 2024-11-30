@@ -145,7 +145,7 @@ class PermissionHelper
 }
 ```
 
-## Controller check permission
+* Controller check permission
 ```bash
 if (PermissionHelper::hasPermission('delete-articles')) {
     dd('Permission granted: OK');
