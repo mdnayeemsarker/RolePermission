@@ -119,6 +119,81 @@ if ($user && $user->role()->exists()) {
 }
 ```
 
+## Check permission in contoller 
+* Fist make and Helper (app/Helper/PermissionHelper.php)
+```bash
+<?php
+namespace App\Helpers;
+use Illuminate\Support\Facades\Auth;
+class PermissionHelper
+{
+    /**
+     * Check if the authenticated user has a specific permission.
+     *
+     * @param  string  $permission
+     * @return bool
+     */
+    public static function hasPermission($ppermissionName)
+    {
+        $user = Auth::user();
+        if ($user && $user->role()->exists()) {
+            $permissions = $user->allPermissions();
+            return $permissions->contains('name', $permissionName);
+        }
+        return false;
+    }
+}
+```
+
+## Controller check permission
+```bash
+if (PermissionHelper::hasPermission('delete-articles')) {
+    dd('Permission granted: OK');
+}else{
+    dd('Permission not granted: NOT');
+}
+```
+
+## For check permission in blade
+* First create an Helper.php (app/Http/Helper.php) and set composer.json autoload
+```bash
+"autoload": {
+    "files": [
+        "app/Http/Helper.php"
+    ]
+}
+```
+
+## Helper function code
+```bash
+if (!function_exists('hasPermission')) {
+   /**
+     * Check if the authenticated user has a specific permission.
+     *
+     * @param  string  $permission
+     * @return bool
+     */
+    function hasPermission($permissionName)
+    {
+        $user = Auth::user();
+        if ($user && $user->role()->exists()) {
+            $permissions = $user->allPermissions();
+            return $permissions->contains('name', $permissionName);
+        }
+        return false;
+    }
+}
+```
+
+## blade file code
+```bash
+@if (hasPermission('delete-articles'))
+    Permission granted: OK
+@else
+    Permission not granted: NOT 
+@endif
+```
+
 ## Getting To Know Yeoman
 
 * Feel free to [learn more about MD NAYEEM SARKER](https://github.com/mdnayeemsarker).
