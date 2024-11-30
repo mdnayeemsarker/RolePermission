@@ -194,7 +194,7 @@ if (!function_exists('hasPermission')) {
 @endif
 ```
 
-## Getting To Know Yeoman
+## Getting To Know MD NAYEEM SARKER
 
 * Feel free to [learn more about MD NAYEEM SARKER](https://github.com/mdnayeemsarker).
 
