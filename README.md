@@ -164,7 +164,7 @@ if (PermissionHelper::hasPermission('delete-articles')) {
 }
 ```
 
-## Helper function code
+* Helper function code
 ```bash
 if (!function_exists('hasPermission')) {
    /**
@@ -185,7 +185,7 @@ if (!function_exists('hasPermission')) {
 }
 ```
 
-## blade file code
+* blade file code
 ```bash
 @if (hasPermission('delete-articles'))
     Permission granted: OK
