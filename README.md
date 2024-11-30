@@ -7,7 +7,7 @@ This package provides RolePermission for Laravel applications.
 To install the package, use Composer:
 
 ```bash
-composer require mdnayeemsarker/role-permission:1.0.0
+composer require mdnayeemsarker/role-permission
 ```
 
 
